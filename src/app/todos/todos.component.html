@@ -1,0 +1,29 @@
+<div class="list-group" *ngIf="todos.length > 0">
+  <!-- To-Do List Looping -->
+  <div
+    *ngFor="let todo of todos; index as i"
+    class="list-group-item list-group-item-action text-dark"
+    (swipeRight)="delete($event, i)"
+    (dblclick)="openEdit(todo)"
+  >
+    <a href="#" id="a{{ i }}" class="text-dark" style="text-decoration: none;">
+      {{ todo.title }}
+      <span class="text-muted float-right">{{ todo.time }}</span>
+    </a>
+
+    <span *ngIf="showDialog == todo.id">
+      <input
+        type="text"
+        value=""
+        [(ngModel)]="editedVal"
+        (keyup)="editTodo($event, i)"
+      />
+    </span>
+  </div>
+  <!-- To-Do List Looping End -->
+  <small class="text-muted mt-1">Swipe Left to Delete To-Do.</small>
+</div>
+
+<div class="alert alert-info" *ngIf="todos.length === 0">
+  There is no Task
+</div>

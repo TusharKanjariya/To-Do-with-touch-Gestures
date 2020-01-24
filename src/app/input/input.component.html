@@ -1,0 +1,11 @@
+<div class="form-group">
+  <label>Add To-Do</label>
+  <input
+    type="text"
+    class="form-control"
+    aria-describedby="passwordHelpInline"
+    [(ngModel)]="searchVal"
+    (keyup)="addTodo($event)"
+  />
+  <small class="text-muted"> Press Enter key to Add todo </small>
+</div>
